@@ -23,7 +23,7 @@ public class LoginChecker {
             session.setAttribute("user", user);
 
         }else {
-            throw new Exception("Usuario ou senha incorretos!");
+            throw new Exception("Usuário ou senha incorretos!");
         }
 
     }

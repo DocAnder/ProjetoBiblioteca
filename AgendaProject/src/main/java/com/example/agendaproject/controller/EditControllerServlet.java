@@ -1,32 +1,26 @@
 package com.example.agendaproject.controller;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import com.example.agendaproject.Dao.DaoLivro;
+import com.example.agendaproject.model.Livro;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/EditBook"})
+@WebServlet(name = "EditControllerServlet", value = "/EditControllerServlet")
 public class EditControllerServlet extends HttpServlet {
-
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        String id2 = req.getParameter("id");
-        System.out.println(id2);
-
-
-        //resp.sendRedirect("http://localhost:8080/AgendaProject/booksList.jsp");
+        String id = request.getParameter("codigo");
+        System.out.println("Parameter: " + id);
         DaoLivro daoLivro = new DaoLivro();
-        req.setAttribute("livros", daoLivro.listAll());
-        //resp.sendRedirect("http://localhost:8080/AgendaProject/booksList.jsp");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("booksList.jsp");
-        requestDispatcher.forward(req, resp);
 
+        //Como enviar dados ou objetos anexados na response?
+        request.setAttribute("livro", daoLivro.getOne(48));
+        response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp");
     }
+
+
 }

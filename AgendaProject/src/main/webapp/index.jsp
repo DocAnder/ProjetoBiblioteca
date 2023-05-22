@@ -7,14 +7,13 @@
     }
 
 %>
-
 <html lang="pt-br">
 <head>
     <style>
         form {
             border: 3px solid #b893f7;
-            margin-left: 30%;
-            margin-right: 30%;
+            margin-left: 35%;
+            margin-right: 35%;
             margin-top: 20px;
             padding: 10px;
         }
@@ -50,11 +49,9 @@
     </form>
 
 </div>
+
+
 </body>
-<script>
-
-
-</script>
 </html>
 
 
