@@ -17,9 +17,13 @@ public class EditControllerServlet extends HttpServlet {
         System.out.println("Parameter: " + id);
         DaoLivro daoLivro = new DaoLivro();
 
-        //Como enviar dados ou objetos anexados na response?
-        request.setAttribute("livro", daoLivro.getOne(48));
-        response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp");
+        //Como enviar dados ou objetos anexados na response (similar ao que faço com a response like setAttribute)?
+        //request.setAttribute("livro", daoLivro.getOne(48));
+        //response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp");
+
+
+        response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp?id=" + id);
+
     }
 
 

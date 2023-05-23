@@ -1,4 +1,6 @@
-<%@ page import="com.example.agendaproject.model.Livro" %><%--
+<%@ page import="com.example.agendaproject.model.Livro" %>
+<%@ page import="com.example.agendaproject.Dao.DaoLivro" %>
+<%@ page import="com.example.agendaproject.Utils.DateFormater" %><%--
   Created by IntelliJ IDEA.
   User: Anderson
   Date: 21/05/2023
@@ -8,9 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 
-  Livro livro = (Livro) request.getAttribute("livro");
-  String nome = livro.getNome();
-  System.out.println(nome);
+  Integer id = Integer.valueOf(request.getParameter("id"));
+  DaoLivro daoLivro = new DaoLivro();
+  Livro livro = daoLivro.getOne(id);
+  System.out.println(livro.getNome());
+  System.out.println(livro.getAutor().getNome());
+
 
 %>
 <html>
@@ -36,20 +41,23 @@
 <div class="container">
   <form action="" method="post">
     <h1 class="h3 mb-3 fw-normal">Cadastro de Livro</h1>
-
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="nome" name="bookName">
-      <label for="floatingInput">book name</label>
+      <input type="text" class="form-control" id="floatingInput" placeholder="<%= livro.getNome() %>" name="bookName" value="<%= livro.getNome() %>">
+      <label for="floatingInput">Titulo</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput2" placeholder="autor" name="autorName">
-      <label for="floatingInput2">autors name</label>
+      <input type="text" class="form-control" id="floatingInput2" placeholder="<%= livro.getAutor().getNome() %>" name="autorName">
+      <label for="floatingInput2">Nome do Autor</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-      <label for="floatingPassword">Password</label>
+      <input type="text" class="form-control" id="floatingInput3" placeholder="<%= livro.getStatus() %>" name="status">
+      <label for="floatingInput3">Status</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput4" placeholder="<%= DateFormater.dateParaString(livro.getDate()) %>" name="date">
+      <label for="floatingInput4">Data lançamento</label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
   </form>
 
 </div>
