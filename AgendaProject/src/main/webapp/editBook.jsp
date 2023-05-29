@@ -60,7 +60,7 @@
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
     </form>
-    <p>NOTA: Caso o autor informado não exista no banco, um novo será criado automaticamente.</p>
+    <p>NOTA: Caso o autor informado não esteja cadastrado, um novo será criado automaticamente.</p>
 
 </div>
 

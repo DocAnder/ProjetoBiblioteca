@@ -63,6 +63,7 @@
     <div class="containerButton">
       <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
     </div>
+    <p>NOTA: Caso o autor informado não esteja cadastrado, um novo será criado automaticamente.</p>
   </form>
 
 </div>
