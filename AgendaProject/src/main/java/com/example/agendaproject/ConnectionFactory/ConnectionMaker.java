@@ -10,8 +10,10 @@ public class ConnectionMaker {
         try {
 
             if(conn == null){
-                Class.forName("com.mysql.jdbc.Driver"); //nessário para conexões em aplicações web
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/dbagenda", "root", "bel468608");
+                //com.mysql.cj.jdbc.Driver
+                // com.mysql.jdbc.Driver DEPRECATED
+                Class.forName("com.mysql.cj.jdbc.Driver"); //nessário para conexões em aplicações web
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/bd_biblioteca?useTimezone=true&serverTimezone=UTC", "root", "bel468608");
             }
             return conn;
         } catch (SQLException | ClassNotFoundException e) {

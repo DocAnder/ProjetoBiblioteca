@@ -32,6 +32,13 @@
     h1{
       text-align: center;
     }
+    button{
+      width: 200px;
+    }
+    .containerButton{
+      width: 200px;
+      margin-bottom: 5px;
+    }
   </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,6 +50,9 @@
 <body>
 <h1>Lista de Livros</h1>
 <div class="container">
+  <div class="containerButton">
+    <a href="creatBooks.jsp" method="get"> <button class="w-100 btn btn-lg btn-primary" type="button">Cadastrar Novo</button></a>
+  </div>
   <div class="list-group">
     <% for (int i = 0; i < livros.size(); i++) {%>
         <a id=<%=i%> href="EditControllerServlet?codigo=<%= livros.get(i).getCodigo() %>" method="get" class="list-group-item" aria-current="true" onmouseenter="entrou(id)" onmouseleave="saiu(id)">

@@ -22,14 +22,16 @@ public class LoginControllerServlet extends HttpServlet {
         //System.out.println(password);
 
         LoginChecker loginChecker = new LoginChecker();
-        DaoLivro daoLivro = new DaoLivro();
+        //DaoLivro daoLivro = new DaoLivro();
 
         try {
             loginChecker.loginValidate(user, password, req);
-            req.setAttribute("livros", daoLivro.listAll());
+            //req.setAttribute("livros", daoLivro.listAll());
             //resp.sendRedirect("http://localhost:8080/AgendaProject/booksList.jsp");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("booksList.jsp");
-            requestDispatcher.forward(req, resp);
+            //RequestDispatcher requestDispatcher = req.getRequestDispatcher("booksList.jsp");
+            //requestDispatcher.forward(req, resp);
+            resp.sendRedirect("http://localhost:8080/AgendaProject/booksListServlet");
+
 
         }catch (Exception e){
             String msg = e.getMessage();

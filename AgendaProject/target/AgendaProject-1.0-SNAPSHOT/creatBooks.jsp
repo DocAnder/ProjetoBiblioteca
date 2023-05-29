@@ -10,11 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 
-  Integer id = Integer.valueOf(request.getParameter("id"));
-  DaoLivro daoLivro = new DaoLivro();
-  Livro livro = daoLivro.getOne(id);
-  System.out.println(livro.getNome());
-  System.out.println(livro.getAutor().getNome());
+  //Integer id = Integer.valueOf(request.getParameter("id"));
+  //DaoLivro daoLivro = new DaoLivro();
+  //Livro livro = daoLivro.getOne(id);
+  //System.out.println(livro.getNome());
+  //System.out.println(livro.getAutor().getNome());
 
 
 %>
@@ -29,6 +29,9 @@
     h1{
       text-align: center;
     }
+    .containerButton{
+      width: 200px;
+    }
   </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,25 +42,27 @@
 </head>
 <body>
 <div class="container">
-  <form action="" method="post">
+  <form action="CreatNewBookServlet" method="post">
     <h1 class="h3 mb-3 fw-normal">Cadastro de Livro</h1>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="<%= livro.getNome() %>" name="bookName" value="<%= livro.getNome() %>">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Livro Novo" name="bookName" value="">
       <label for="floatingInput">Titulo</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput2" placeholder="<%= livro.getAutor().getNome() %>" name="autorName">
+      <input type="text" class="form-control" id="floatingInput2" placeholder="Autor" name="autorName">
       <label for="floatingInput2">Nome do Autor</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput3" placeholder="<%= livro.getStatus() %>" name="status">
-      <label for="floatingInput3">Status</label>
+      <input type="text" class="form-control" id="floatingInput3" placeholder="Indisponivel" name="status">
+      <label for="floatingInput3">Status (Disponivel, Indisponivel, Emprestado)</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput4" placeholder="<%= DateFormater.dateParaString(livro.getDate()) %>" name="date">
-      <label for="floatingInput4">Data lançamento</label>
+      <input type="text" class="form-control" id="floatingInput4" placeholder="01/01/2010" name="date">
+      <label for="floatingInput4">Data lançamento (dd/mm/yyyy)</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    <div class="containerButton">
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    </div>
   </form>
 
 </div>

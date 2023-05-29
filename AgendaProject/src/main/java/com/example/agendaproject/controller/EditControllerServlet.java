@@ -15,16 +15,17 @@ public class EditControllerServlet extends HttpServlet {
 
         String id = request.getParameter("codigo");
         System.out.println("Parameter: " + id);
-        DaoLivro daoLivro = new DaoLivro();
-
-        //Como enviar dados ou objetos anexados na response (similar ao que faço com a response like setAttribute)?
-        //request.setAttribute("livro", daoLivro.getOne(48));
-        //response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp");
-
-
-        response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp?id=" + id);
+        response.sendRedirect("http://localhost:8080/AgendaProject/editBook.jsp?id=" + id);
 
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        DaoLivro daoLivro = new DaoLivro();
+        Boolean retorno = daoLivro.saveOne(req);
+        System.out.println("SALVOU O LIVRO? " + retorno);
+        resp.sendRedirect("http://localhost:8080/AgendaProject/booksListServlet");
+
+    }
 }

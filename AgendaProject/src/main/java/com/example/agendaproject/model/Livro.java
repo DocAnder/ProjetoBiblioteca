@@ -1,6 +1,8 @@
 package com.example.agendaproject.model;
 
 
+import com.example.agendaproject.Utils.DateFormater;
+
 import java.util.Date;
 
 public class Livro {
@@ -40,5 +42,14 @@ public class Livro {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + this.getCodigo() +
+                " Titulo:" + this.getNome() +
+                " Data:" + DateFormater.dateParaString(this.getDate()) +
+                " Autor: " + this.getAutor().getNome() +
+                " Status: " + this.getStatus();
     }
 }
