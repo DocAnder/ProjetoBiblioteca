@@ -11,7 +11,7 @@
 <%
 
     Integer id = Integer.valueOf(request.getParameter("id"));
-    System.out.println(id);
+    //System.out.println(id);
     DaoLivro daoLivro = new DaoLivro();
     Livro livro = daoLivro.getOne(id);
 
