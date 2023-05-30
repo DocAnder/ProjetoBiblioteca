@@ -16,7 +16,7 @@ public class booksListServlet extends HttpServlet {
 
         DaoLivro daoLivro = new DaoLivro();
         req.setAttribute("livros", daoLivro.listAll());
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("booksList.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("booksList2.jsp");
         requestDispatcher.forward(req, resp);
 
     }

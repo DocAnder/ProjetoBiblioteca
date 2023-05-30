@@ -89,12 +89,10 @@ public class DaoLivro {
         String data = req.getParameter("date");
 
         int idAutor = 0;
-        if (this.findAutor(autorName)){
-            idAutor = this.getIdAutor(autorName);
-        }else{
+        if (!this.findAutor(autorName)) {
             this.saveNewAutor(autorName);
-            idAutor = this.getIdAutor(autorName);
         }
+        idAutor = this.getIdAutor(autorName);
         this.conectar();
         PreparedStatement pst = null;
         try {
