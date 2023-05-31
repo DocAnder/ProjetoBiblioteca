@@ -112,6 +112,29 @@ public class DaoLivro {
         return result;
     }
 
+    public boolean saveOne(Livro livro){
+        Boolean save = false;
+
+        this.conectar();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement(
+                    "UPDATE Livros SET titulo = ?, status_livro = ?, ano_publicacao = ?, autor_id = ? WHERE id = ?"
+            );
+            pst.setString(1, livro.getNome());
+            pst.setString(2, livro.getStatus().toString());
+            pst.setString(3, DateFormater.stringToSqlFormat(DateFormater.dateParaString(livro.getDate())));
+            pst.setInt(5, livro.getCodigo());
+            pst.setInt(4, livro.getAutor().getId());
+            pst.executeUpdate();
+            save = true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return save;
+    }
+
     public  boolean saveNewOne(HttpServletRequest req){
         Boolean retorno = false;
         int idAutor = 0;
