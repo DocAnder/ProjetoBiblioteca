@@ -18,8 +18,28 @@
     }
 
     ArrayList<Livro> livros = (ArrayList<Livro>) request.getAttribute("livros");
-    //String livro1 = livros.get(1).getNome();
-    //System.out.println(livro1);
+
+
+    String msg = request.getParameter("msg");
+    if(msg == null){
+        msg = "";
+    }else{
+        msg = "<div class=\"alert alert-primary d-flex align-items-center\" role=\"alert\">\n" +
+                "      <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"bi bi-exclamation-triangle-fill flex-shrink-0 me-2\" viewBox=\"0 0 16 16\" role=\"img\" aria-label=\"Warning:\">\n" +
+                "        <path d=\"M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z\"></path>\n" +
+                "      </svg>\n" +
+                "      <div>\n" +
+                "        Só é possivel deletar um livro cujo status seja INDISPONÍVEL\n" +
+                "      </div>\n" +
+                "    </div>";
+    }
+
+
+
+
+
+
+
 %>
 <html>
 <head>
@@ -37,6 +57,12 @@
             border-collapse: collapse; /* CSS2 */
             padding: 4px;
         }
+        .center{
+            text-align: center;
+        }
+        .w-100 btn btn-sm btn-primary{
+            width: 100px;
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,6 +76,10 @@
 <h1 class="center">Lista de Livros</h1>
 
 <div class="caixa">
+    <div class="containerButton">
+        <a href="creatBooks.jsp" method="get"> <button class="w-100 btn btn-sm btn-primary" type="button">Cadastrar Novo</button></a>
+    </div>
+    <p> <%= msg %> </p>
     <% for (int i = 0; i < livros.size(); i++) {%>
         <div>
             <a id=<%=i%> href="EditControllerServlet?codigo=<%= livros.get(i).getCodigo() %>" method="get" class="list-group-item " aria-current="true" onmouseenter="entrou(id)" onmouseleave="saiu(id)">
@@ -70,7 +100,8 @@
                     <li><a class="dropdown-item" href="EditStatusControllerServlet?status=Indisponivel&id=<%= livros.get(i).getCodigo() %>">Indisponivel</a></li>
                     <li><a class="dropdown-item" href="EditStatusControllerServlet?status=Emprestado&id=<%= livros.get(i).getCodigo() %>">Emprestado</a></li>
                 </ul>
-                <button type="button" class="btn btn-warning btn-sm">Deletar</button>
+                <a class="btn btn-outline-warning btn-sm" href="DeleteBookControllerServlet?id=<%= livros.get(i).getCodigo() %>&status=<%= livros.get(i).getStatus() %>" role="button">Delete</a>
+
                 <p class="bordas"></p>
 
         </div>

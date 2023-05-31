@@ -8,16 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
 
-  //Integer id = Integer.valueOf(request.getParameter("id"));
-  //DaoLivro daoLivro = new DaoLivro();
-  //Livro livro = daoLivro.getOne(id);
-  //System.out.println(livro.getNome());
-  //System.out.println(livro.getAutor().getNome());
-
-
-%>
 <html>
 <head>
   <style>

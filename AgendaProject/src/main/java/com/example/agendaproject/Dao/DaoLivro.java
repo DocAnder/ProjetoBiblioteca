@@ -233,4 +233,21 @@ public class DaoLivro {
         return livro;
     }
 
+    public void deleteOne(Integer id){
+        this.conectar();
+        PreparedStatement pst = null;
+
+        try {
+            pst = conn.prepareStatement(
+                    "DELETE FROM Livros WHERE id = ?;"
+            );
+            pst.setInt(1, id);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 }
