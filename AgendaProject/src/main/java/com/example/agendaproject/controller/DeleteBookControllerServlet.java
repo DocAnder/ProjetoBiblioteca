@@ -16,7 +16,7 @@ public class DeleteBookControllerServlet extends HttpServlet {
         String status = request.getParameter("status");
         System.out.println("ID" + id);
         System.out.println("STATUS" + status);
-        if(status.toUpperCase() == "INDISPONIVEL"){
+        if(status.equals("INDISPONIVEL")){
             DaoLivro daoLivro = new DaoLivro();
             daoLivro.deleteOne(Integer.parseInt(id));
             response.sendRedirect("http://localhost:8080/AgendaProject/booksListServlet");
