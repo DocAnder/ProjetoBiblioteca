@@ -9,6 +9,7 @@
 <%@ page import="com.example.agendaproject.model.Livro" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.agendaproject.Utils.DateFormater" %>
+<%@ page import="com.example.agendaproject.model.User" %>
 <!DOCTYPE html>
 <%
 
@@ -18,7 +19,7 @@
     }
 
     ArrayList<Livro> livros = (ArrayList<Livro>) request.getAttribute("livros");
-
+    User usuario = (User) session.getAttribute("user");
 
     String msg = request.getParameter("msg");
     if(msg == null){
@@ -74,6 +75,7 @@
 </head>
 <body>
 <h1 class="center">Lista de Livros</h1>
+<p>Bem vindo <%=usuario.getName()%> !</p>
 
 <div class="caixa">
     <div class="containerButton">

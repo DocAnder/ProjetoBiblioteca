@@ -10,6 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 
+    Boolean logado = (Boolean) session.getAttribute("is_logged_in");
+    if(logado == null || logado == false){
+        response.sendRedirect("http://localhost:8080/AgendaProject/index.jsp");
+    }
+
     Integer id = Integer.valueOf(request.getParameter("id"));
     //System.out.println(id);
     DaoLivro daoLivro = new DaoLivro();
