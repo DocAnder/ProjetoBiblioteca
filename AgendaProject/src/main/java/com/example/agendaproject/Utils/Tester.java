@@ -14,10 +14,17 @@ public class Tester {
 
         DaoUser daoUser = new DaoUser();
 
-        User user = daoUser.getOne("a@admin");
+        User user = new User();
+
+        user.setName("Anderson");
+        user.setEmail("anderson@gmail.com");
+        user.setPassword("12345");
+        user.setType("regular");
+
+        daoUser.create(user);
 
 
-        System.out.println(user.getName() + "  " + user.getEmail() + " " + user.getType());
+
 
 
 

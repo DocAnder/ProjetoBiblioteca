@@ -13,7 +13,7 @@ public class LoginChecker {
         if(user.isEmpty() || user == null || password.isEmpty() || password == null){
             throw  new Exception("Preencha os campos com email e senha!");
         }else{
-            User usuario = new User();
+            User usuario;
             DaoUser daoUser = new DaoUser();
             usuario = daoUser.getOne(user);
             if(user.equals(usuario.getEmail()) && password.equals(usuario.getPassword())){
