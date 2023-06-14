@@ -16,6 +16,15 @@
   }
 
 
+  String msg = request.getParameter("msg");
+  if(msg == null){
+    msg = "";
+  }else{
+    msg = "Preencha todos os campos para cadastrar um novo livro!";
+
+  }
+
+
 %>
 
 
@@ -33,6 +42,7 @@
     .containerButton{
       width: 200px;
     }
+
   </style>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +54,7 @@
 <body>
 <div class="container">
   <form action="CreatNewBookServlet" method="post">
+
     <h1 class="h3 mb-3 fw-normal">Cadastro de Livro</h1>
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="Livro Novo" name="bookName" value="">
@@ -58,16 +69,31 @@
       <label for="floatingInput3">Status (Disponivel, Indisponivel, Emprestado)</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput4" placeholder="01/01/2010" name="date">
+      <input type="text" class="form-control" id="floatingInput4" name="floatingInput4" placeholder="01/01/2010" onblur="formatarData()" >
       <label for="floatingInput4">Data lançamento (dd/mm/yyyy)</label>
     </div>
     <div class="containerButton">
       <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
     </div>
     <p>NOTA: Caso o autor informado ainda não exista no sistema, um novo será cadastrado automaticamente.</p>
+    <p><b> <%= msg %> </b></p>
   </form>
 
 </div>
+
+<script>
+
+  function formatarData() {
+    let inputData = document.getElementById("floatingInput4").value;
+    let dataFormatada = inputData.slice(0, 2) + "/" + inputData.slice(2, 4) + "/" + inputData.slice(4);
+
+    document.getElementById("floatingInput4").value = dataFormatada;
+  }
+
+
+
+
+</script>
 
 </body>
 </html>

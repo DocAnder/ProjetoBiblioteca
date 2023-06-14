@@ -142,29 +142,42 @@ public class DaoLivro {
         String bookName = req.getParameter("bookName");
         String autorName = req.getParameter("autorName");
         String status = req.getParameter("status");
-        String data = req.getParameter("date");
+        String data = req.getParameter("floatingInput4");
+        System.out.println(bookName);
+        System.out.println(data);
 
-        if (!this.findAutor(autorName)) {
-            this.saveNewAutor(autorName);
-        }
-        idAutor = this.getIdAutor(autorName);
+        if(bookName.isEmpty() || bookName == null || autorName.isEmpty() || autorName == null || status.isEmpty() || status == null || data.isEmpty() || data == null){
+            return retorno;
+        }else {
 
-        this.conectar();
-        PreparedStatement pst = null;
-        try {
-            pst = conn.prepareStatement(
-                    "INSERT INTO Livros (id, titulo, ano_publicacao, status_livro, autor_id) VALUES (NULL,?,?,?,?)"
-            );
-            pst.setString(1, bookName);
-            pst.setString(2, DateFormater.stringToSqlFormat(data));
-            pst.setString(3, status);
-            pst.setInt(4, idAutor);
-            pst.executeUpdate();
-            retorno = true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            if (!this.findAutor(autorName)) {
+                this.saveNewAutor(autorName);
+            }
+            idAutor = this.getIdAutor(autorName);
+
+            this.conectar();
+            PreparedStatement pst = null;
+            try {
+                pst = conn.prepareStatement(
+                        "INSERT INTO Livros (id, titulo, ano_publicacao, status_livro, autor_id) VALUES (NULL,?,?,?,?)"
+                );
+                pst.setString(1, bookName);
+                pst.setString(2, DateFormater.stringToSqlFormat(data));
+                pst.setString(3, status);
+                pst.setInt(4, idAutor);
+                pst.executeUpdate();
+                retorno = true;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return retorno;
+
+
         }
-        return retorno;
+
+
+
+
     }
 
     //FINDAUTOR TESTADA E FUNCIONAL

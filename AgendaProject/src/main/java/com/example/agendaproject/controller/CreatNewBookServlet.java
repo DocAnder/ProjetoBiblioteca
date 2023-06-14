@@ -15,7 +15,12 @@ public class CreatNewBookServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         DaoLivro daoLivro = new DaoLivro();
-        daoLivro.saveNewOne(request);
-        response.sendRedirect("http://localhost:8080/AgendaProject/booksListServlet");
+        Boolean salvo = daoLivro.saveNewOne(request);
+        if (salvo){
+            response.sendRedirect("http://localhost:8080/AgendaProject/booksListServlet");
+        }else{
+            response.sendRedirect("http://localhost:8080/AgendaProject/creatBooks.jsp?msg=notSave");
+        }
+
     }
 }
